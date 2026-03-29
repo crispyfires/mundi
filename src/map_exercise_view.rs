@@ -11,6 +11,7 @@ use std::time::Instant;
 use crate::map_widget::{MapWidget, RegionState};
 use crate::quiz::Quiz;
 use crate::registry::{ExerciseKind, MapExercise};
+use crate::sound_player::SoundPlayer;
 
 mod imp {
     use super::*;
@@ -50,6 +51,7 @@ mod imp {
         pub quiz_active: RefCell<bool>,
         pub start_time: Rc<RefCell<Option<Instant>>>,
         pub timer_source_id: RefCell<Option<glib::SourceId>>,
+        pub sound_player: SoundPlayer,
     }
 
     #[glib::object_subclass]
@@ -242,13 +244,16 @@ impl MapExerciseView {
 
             if correct {
                 map.set_region_state(&target, RegionState::Correct);
+                imp.sound_player.play_correct();
             } else if quiz.attempts_left == 3 {
                 // Ran out of attempts (answer() reset to 3 and advanced)
                 // Only the target stays red permanently
                 map.set_region_state(&target, RegionState::Wrong);
+                imp.sound_player.play_wrong();
             } else {
                 // Still has attempts — flash wrong briefly
                 map.set_region_state(region_id, RegionState::Wrong);
+                imp.sound_player.play_wrong();
                 let map_weak = map.downgrade();
                 let rid = region_id.to_string();
                 glib::timeout_add_local_once(std::time::Duration::from_millis(500), move || {

@@ -4,6 +4,7 @@ mod map_widget;
 mod quiz;
 mod region_names;
 mod registry;
+mod sound_player;
 mod window;
 
 mod config {
