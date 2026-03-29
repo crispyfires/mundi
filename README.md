@@ -20,6 +20,7 @@ A geography learning application for GNOME. Test your knowledge of world regions
 2. The app asks you to find a region on the map
 3. Click on the correct region — you get 3 attempts per question
 4. Correct answers turn green, wrong ones turn red
+5. Sound effects for correct and wrong answers (can be disabled in Preferences)
 
 ## Building
 

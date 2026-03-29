@@ -18,6 +18,8 @@ Mundi is a geography learning application that quizzes users on map regions usin
 - **Registry**: Data-driven design — countries and exercises defined in `registry.rs`
 - **SVG Maps**: Simple `M L Z` path data with region name IDs, stored as GResources
 - **Quiz Logic**: Random order, 3 attempts per region, translatable region names via gettext
+- **Sound Effects**: `SoundPlayer` class wraps two `GtkMediaFile` instances (correct/wrong), reads `sound-effects` GSettings key before playing. Sound files are bundled OGA from freedesktop theme in `resources/sounds/`
+- **Preferences**: `PreferencesDialog` (AdwPreferencesDialog subclass with UI template) — currently has sound effects toggle, bound to GSettings
 
 ## Development Workflow
 
