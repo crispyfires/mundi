@@ -419,6 +419,25 @@ pub const POLAND_VOIVODESHIPS: &[(&str, &str)] = &[
     ("Łódź", N_("Łódź")),
 ];
 
+pub const POLAND_VOIVODESHIP_CAPITALS: &[(&str, &str)] = &[
+    (N_("Białystok"), N_("Podlachia")),
+    (N_("Bydgoszcz"), N_("Kuyavia-Pomerania")),
+    (N_("Gdańsk"), N_("Pomerania")),
+    (N_("Gorzów Wielkopolski"), N_("Lubusz")),
+    (N_("Katowice"), N_("Silesia")),
+    (N_("Kielce"), N_("Świętokrzyskie")),
+    (N_("Kraków"), N_("Lesser Poland")),
+    (N_("Lublin"), N_("Lublin")),
+    (N_("Łódź"), N_("Łódź")),
+    (N_("Olsztyn"), N_("Warmia-Masuria")),
+    (N_("Opole"), N_("Opole")),
+    (N_("Poznań"), N_("Greater Poland")),
+    (N_("Rzeszów"), N_("Subcarpathia")),
+    (N_("Szczecin"), N_("West Pomerania")),
+    (N_("Warsaw"), N_("Masovia")),
+    (N_("Wrocław"), N_("Lower Silesia")),
+];
+
 pub const PORTUGAL_DISTRICTS: &[(&str, &str)] = &[
     ("Aveiro", N_("Aveiro")),
     ("Azores", N_("Azores")),

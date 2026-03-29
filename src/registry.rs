@@ -195,16 +195,31 @@ static PORTUGAL_EXERCISES: &[MapExercise] = &[MapExercise {
     alternates: &[],
 }];
 
-static POLAND_EXERCISES: &[MapExercise] = &[MapExercise {
-    id: "voivodeships",
-    country_id: "poland",
-    title_msgid: N_("Voivodeships"),
-    svg_resource: "/io/github/nacho/mundi/maps/poland/voivodeships.svg",
-    regions: crate::region_names::POLAND_VOIVODESHIPS,
-    group: None,
-    kind: ExerciseKind::Standard,
-    alternates: &[],
-}];
+static POLAND_EXERCISES: &[MapExercise] = &[
+    MapExercise {
+        id: "voivodeships",
+        country_id: "poland",
+        title_msgid: N_("Voivodeships"),
+        svg_resource: "/io/github/nacho/mundi/maps/poland/voivodeships.svg",
+        regions: crate::region_names::POLAND_VOIVODESHIPS,
+        group: None,
+        kind: ExerciseKind::Standard,
+        alternates: &[],
+    },
+    MapExercise {
+        id: "voivodeship-capitals",
+        country_id: "poland",
+        title_msgid: N_("Capitals of Voivodeships"),
+        svg_resource: "/io/github/nacho/mundi/maps/poland/voivodeship-capitals.svg",
+        regions: crate::region_names::POLAND_VOIVODESHIP_CAPITALS,
+        group: None,
+        kind: ExerciseKind::Capitals,
+        alternates: &[
+            ("Toruń", "Bydgoszcz"),
+            ("Zielona Góra", "Gorzów Wielkopolski"),
+        ],
+    },
+];
 
 static US_EXERCISES: &[MapExercise] = &[MapExercise {
     id: "states",
