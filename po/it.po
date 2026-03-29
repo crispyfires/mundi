@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-29 19:26+0200\n"
+"POT-Creation-Date: 2026-03-29 23:17+0200\n"
 "PO-Revision-Date: 2026-03-27 20:28+0100\n"
 "Last-Translator: Albano Battistella <albanobattistella@gmail.com>\n"
 "Language-Team: Italian <LL@li.org>\n"
@@ -1870,23 +1870,27 @@ msgstr "Stati"
 msgid "World"
 msgstr "Mondo"
 
-#: src/map_exercise_view.rs:283
+#: src/map_exercise_view.rs:288
 msgid "Select"
 msgstr "Seleziona"
 
-#: src/map_exercise_view.rs:286
+#: src/map_exercise_view.rs:291
 msgid "Attempts remaining"
 msgstr "Tentativi rimasti"
 
-#: src/map_exercise_view.rs:325
+#: src/map_exercise_view.rs:330
 msgid "Score"
 msgstr "Punteggio"
 
-#: src/map_exercise_view.rs:330
+#: src/map_exercise_view.rs:335
 msgid "Time"
 msgstr "Tempo"
 
 #: resources/gtk/menus.ui:6
+msgid "_Preferences"
+msgstr "_Preferenze"
+
+#: resources/gtk/menus.ui:12
 msgid "_About Mundi"
 msgstr "_Informazioni su Mundi"
 
@@ -1905,3 +1909,7 @@ msgstr "Inizia quiz"
 #: resources/ui/map_exercise_view.ui:134
 msgid "Retry"
 msgstr "Riprova"
+
+#: resources/ui/preferences_dialog.ui:10
+msgid "Sound Effects"
+msgstr "Effetti sonori"

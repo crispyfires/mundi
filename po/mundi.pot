@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-29 19:26+0200\n"
+"POT-Creation-Date: 2026-03-29 23:17+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1871,23 +1871,27 @@ msgstr ""
 msgid "World"
 msgstr ""
 
-#: src/map_exercise_view.rs:283
+#: src/map_exercise_view.rs:288
 msgid "Select"
 msgstr ""
 
-#: src/map_exercise_view.rs:286
+#: src/map_exercise_view.rs:291
 msgid "Attempts remaining"
 msgstr ""
 
-#: src/map_exercise_view.rs:325
+#: src/map_exercise_view.rs:330
 msgid "Score"
 msgstr ""
 
-#: src/map_exercise_view.rs:330
+#: src/map_exercise_view.rs:335
 msgid "Time"
 msgstr ""
 
 #: resources/gtk/menus.ui:6
+msgid "_Preferences"
+msgstr ""
+
+#: resources/gtk/menus.ui:12
 msgid "_About Mundi"
 msgstr ""
 
@@ -1905,4 +1909,8 @@ msgstr ""
 
 #: resources/ui/map_exercise_view.ui:134
 msgid "Retry"
+msgstr ""
+
+#: resources/ui/preferences_dialog.ui:10
+msgid "Sound Effects"
 msgstr ""

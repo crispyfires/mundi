@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-29 19:26+0200\n"
+"POT-Creation-Date: 2026-03-29 23:17+0200\n"
 "PO-Revision-Date: 2026-03-20 18:46+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1871,23 +1871,27 @@ msgstr "Estados"
 msgid "World"
 msgstr "Mundo"
 
-#: src/map_exercise_view.rs:283
+#: src/map_exercise_view.rs:288
 msgid "Select"
 msgstr "Selecciona"
 
-#: src/map_exercise_view.rs:286
+#: src/map_exercise_view.rs:291
 msgid "Attempts remaining"
 msgstr "Intentos restantes"
 
-#: src/map_exercise_view.rs:325
+#: src/map_exercise_view.rs:330
 msgid "Score"
 msgstr "Puntuación"
 
-#: src/map_exercise_view.rs:330
+#: src/map_exercise_view.rs:335
 msgid "Time"
 msgstr "Tiempo"
 
 #: resources/gtk/menus.ui:6
+msgid "_Preferences"
+msgstr "_Preferencias"
+
+#: resources/gtk/menus.ui:12
 msgid "_About Mundi"
 msgstr "_Acerca de Mundi"
 
@@ -1906,3 +1910,7 @@ msgstr "Iniciar prueba"
 #: resources/ui/map_exercise_view.ui:134
 msgid "Retry"
 msgstr "Reintentar"
+
+#: resources/ui/preferences_dialog.ui:10
+msgid "Sound Effects"
+msgstr "Efectos de sonido"
