@@ -2,6 +2,10 @@
 <schemalist>
   <schema id="io.github.nacho.mundi" path="/io/github/nacho/mundi/">
     <child name="state" schema="io.github.nacho.mundi.state"/>
+    <key name="sound-effects" type="b">
+      <default>true</default>
+      <summary>Enable sound effects</summary>
+    </key>
   </schema>
 
   <schema id="io.github.nacho.mundi.state" path="/io/github/nacho/mundi/state/">

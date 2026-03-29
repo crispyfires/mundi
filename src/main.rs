@@ -1,6 +1,7 @@
 mod application;
 mod map_exercise_view;
 mod map_widget;
+mod preferences_dialog;
 mod quiz;
 mod region_names;
 mod registry;

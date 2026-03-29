@@ -5,6 +5,7 @@ use libadwaita as adw;
 use libadwaita::prelude::*;
 use libadwaita::subclass::prelude::*;
 
+use crate::preferences_dialog::PreferencesDialog;
 use crate::window::MundiWindow;
 
 mod imp {
@@ -69,10 +70,19 @@ impl MundiApplication {
             gio::ActionEntry::builder("quit")
                 .activate(|app: &Self, _, _| app.quit())
                 .build(),
+            gio::ActionEntry::builder("preferences")
+                .activate(|app: &Self, _, _| app.show_preferences())
+                .build(),
             gio::ActionEntry::builder("about")
                 .activate(|app: &Self, _, _| app.show_about())
                 .build(),
         ]);
+    }
+
+    fn show_preferences(&self) {
+        let dialog = PreferencesDialog::new();
+        let window = self.active_window();
+        dialog.present(window.as_ref());
     }
 
     fn show_about(&self) {

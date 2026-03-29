@@ -3,6 +3,7 @@ use gtk::prelude::*;
 pub struct SoundPlayer {
     correct: gtk::MediaFile,
     wrong: gtk::MediaFile,
+    settings: gio::Settings,
 }
 
 impl Default for SoundPlayer {
@@ -10,18 +11,24 @@ impl Default for SoundPlayer {
         Self {
             correct: gtk::MediaFile::for_resource("/io/github/nacho/mundi/sounds/correct.oga"),
             wrong: gtk::MediaFile::for_resource("/io/github/nacho/mundi/sounds/wrong.oga"),
+            settings: gio::Settings::new("io.github.nacho.mundi"),
         }
     }
 }
 
 impl SoundPlayer {
     pub fn play_correct(&self) {
-        self.correct.seek(0);
-        self.correct.play();
+        self.play(&self.correct);
     }
 
     pub fn play_wrong(&self) {
-        self.wrong.seek(0);
-        self.wrong.play();
+        self.play(&self.wrong);
+    }
+
+    fn play(&self, media: &gtk::MediaFile) {
+        if self.settings.boolean("sound-effects") {
+            media.seek(0);
+            media.play();
+        }
     }
 }
