@@ -1,4 +1,5 @@
 use gtk::prelude::*;
+use std::path::PathBuf;
 
 pub struct SoundPlayer {
     correct: gtk::MediaFile,
@@ -8,9 +9,13 @@ pub struct SoundPlayer {
 
 impl Default for SoundPlayer {
     fn default() -> Self {
+        let sounds_dir = PathBuf::from(crate::config::DATADIR)
+            .join("sounds")
+            .join("freedesktop")
+            .join("stereo");
         Self {
-            correct: gtk::MediaFile::for_resource("/io/github/nacho/mundi/sounds/correct.oga"),
-            wrong: gtk::MediaFile::for_resource("/io/github/nacho/mundi/sounds/wrong.oga"),
+            correct: gtk::MediaFile::for_filename(sounds_dir.join("complete.oga")),
+            wrong: gtk::MediaFile::for_filename(sounds_dir.join("dialog-error.oga")),
             settings: gio::Settings::new("io.github.nacho.mundi"),
         }
     }
