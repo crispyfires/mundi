@@ -56,9 +56,11 @@ mod imp {
         fn signals() -> &'static [Signal] {
             static SIGNALS: OnceLock<Vec<Signal>> = OnceLock::new();
             SIGNALS.get_or_init(|| {
-                vec![Signal::builder("region-clicked")
-                    .param_types([String::static_type()])
-                    .build()]
+                vec![
+                    Signal::builder("region-clicked")
+                        .param_types([String::static_type()])
+                        .build(),
+                ]
             })
         }
 
@@ -433,10 +435,10 @@ impl MapWidget {
             {
                 continue;
             }
-            if let Some((_, dist)) = region.path.closest_point(&point, river_threshold) {
-                if best_river.is_none() || dist < best_river.unwrap().0 {
-                    best_river = Some((dist, region));
-                }
+            if let Some((_, dist)) = region.path.closest_point(&point, river_threshold)
+                && (best_river.is_none() || dist < best_river.unwrap().0)
+            {
+                best_river = Some((dist, region));
             }
         }
         if let Some((_, r)) = best_river {

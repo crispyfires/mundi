@@ -14,7 +14,7 @@ mod config {
 }
 
 use anyhow::Result;
-use gettextrs::{bind_textdomain_codeset, bindtextdomain, setlocale, textdomain, LocaleCategory};
+use gettextrs::{LocaleCategory, bind_textdomain_codeset, bindtextdomain, setlocale, textdomain};
 use gio::prelude::*;
 use std::path::PathBuf;
 
