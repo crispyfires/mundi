@@ -170,6 +170,7 @@ mod imp {
                     snapshot.append_fill(&region.path, gtk::gsk::FillRule::Winding, &c_border);
                     continue;
                 }
+
                 if region.state == RegionState::Background {
                     let b = &region.bounds;
                     if b.width() < 8.0 || b.height() < 8.0 {
@@ -179,6 +180,7 @@ mod imp {
                     snapshot.append_stroke(&region.path, &stroke, &c_border);
                     continue;
                 }
+
                 let fill_color = match region.state {
                     RegionState::Normal => c_normal,
                     RegionState::Highlighted => c_highlight,
@@ -186,6 +188,7 @@ mod imp {
                     RegionState::Wrong => c_wrong,
                     RegionState::Decorative | RegionState::Background => unreachable!(),
                 };
+
                 if region.is_river {
                     snapshot.append_stroke(&region.path, &river_stroke, &fill_color);
                 } else {
@@ -193,6 +196,7 @@ mod imp {
                     snapshot.append_stroke(&region.path, &stroke, &c_border);
                 }
             }
+
             // Draw markers for tiny regions and rivers on top of everything
             for region in regions.iter() {
                 if region.state == RegionState::Decorative
@@ -200,11 +204,13 @@ mod imp {
                 {
                     continue;
                 }
+
                 let b = &region.bounds;
                 let is_small = b.width() < 8.0 || b.height() < 8.0;
                 if !is_small && !region.is_river {
                     continue;
                 }
+
                 let fill_color = match region.state {
                     RegionState::Normal => c_normal,
                     RegionState::Highlighted => c_highlight,
@@ -212,6 +218,7 @@ mod imp {
                     RegionState::Wrong => c_wrong,
                     RegionState::Decorative | RegionState::Background => unreachable!(),
                 };
+
                 let (cx, cy) = if region.is_river {
                     let measure = gtk::gsk::PathMeasure::new(&region.path);
                     if let Some(pp) = measure.point(measure.length() / 2.0) {
@@ -223,6 +230,7 @@ mod imp {
                 } else {
                     (b.x() + b.width() / 2.0, b.y() + b.height() / 2.0)
                 };
+
                 let r = 5.0 / scale;
                 let marker = gtk::gsk::Path::parse(&format!(
                     "M {},{} L {},{} L {},{} L {},{} Z",
@@ -236,6 +244,7 @@ mod imp {
                     cy + r
                 ))
                 .unwrap();
+
                 snapshot.append_fill(&marker, gtk::gsk::FillRule::Winding, &fill_color);
                 snapshot.append_stroke(&marker, &stroke, &c_border);
             }
@@ -260,6 +269,7 @@ mod imp {
                 ctx.lookup_color(name)
                     .unwrap_or(gtk::gdk::RGBA::new(0.5, 0.5, 0.5, 1.0))
             };
+
             *self.cached_colors.borrow_mut() = [
                 lookup("map-region-color"),
                 lookup("map-region-highlight-color"),
@@ -314,12 +324,14 @@ impl MapWidget {
                                 _ => {}
                             }
                         }
+
                         if let (Some(id), Some(d)) = (id, d) {
                             let d = d.trim().to_string();
                             if let Ok(path) = gtk::gsk::Path::parse(&d) {
                                 let bounds = path
                                     .bounds()
                                     .unwrap_or(gtk::graphene::Rect::new(0.0, 0.0, 0.0, 0.0));
+
                                 let (id, state, is_river) = if id.starts_with("__") {
                                     (id, RegionState::Decorative, false)
                                 } else if let Some(name) = id.strip_prefix("_bg_") {
@@ -329,6 +341,7 @@ impl MapWidget {
                                 } else {
                                     (id, RegionState::Normal, false)
                                 };
+
                                 regions.push(Region {
                                     id,
                                     path,
@@ -356,6 +369,7 @@ impl MapWidget {
                                 _ => {}
                             }
                         }
+
                         if let (Some(id), Some(cx), Some(cy)) = (id, cx, cy) {
                             markers.push((id, cx, cy));
                         }
@@ -390,12 +404,14 @@ impl MapWidget {
             let mut min_y = first.bounds.y();
             let mut max_x = min_x + first.bounds.width();
             let mut max_y = min_y + first.bounds.height();
+
             for r in &regions[1..] {
                 min_x = min_x.min(r.bounds.x());
                 min_y = min_y.min(r.bounds.y());
                 max_x = max_x.max(r.bounds.x() + r.bounds.width());
                 max_y = max_y.max(r.bounds.y() + r.bounds.height());
             }
+
             *imp.svg_bounds.borrow_mut() =
                 gtk::graphene::Rect::new(min_x, min_y, max_x - min_x, max_y - min_y);
         }
@@ -435,12 +451,14 @@ impl MapWidget {
             {
                 continue;
             }
+
             if let Some((_, dist)) = region.path.closest_point(&point, river_threshold)
                 && (best_river.is_none() || dist < best_river.unwrap().0)
             {
                 best_river = Some((dist, region));
             }
         }
+
         if let Some((_, r)) = best_river {
             return Some(r.id.clone());
         }
@@ -457,19 +475,23 @@ impl MapWidget {
             {
                 continue;
             }
+
             let b = &region.bounds;
             if b.width() < min_size || b.height() < min_size {
                 let cx = b.x() + b.width() / 2.0;
                 let cy = b.y() + b.height() / 2.0;
                 let dist = ((svg_x - cx).powi(2) + (svg_y - cy).powi(2)).sqrt();
+
                 if dist < tolerance && (best.is_none() || dist < best.unwrap().0) {
                     best = Some((dist, region));
                 }
             }
         }
+
         if let Some((_, r)) = best {
             return Some(r.id.clone());
         }
+
         let mut smallest: Option<(f32, &Region)> = None;
         for region in regions.iter() {
             if matches!(
@@ -479,6 +501,7 @@ impl MapWidget {
             {
                 continue;
             }
+
             if region.path.in_fill(&point, gtk::gsk::FillRule::Winding) {
                 let area = region.bounds.width() * region.bounds.height();
                 if smallest.is_none() || area < smallest.unwrap().0 {
@@ -486,6 +509,7 @@ impl MapWidget {
                 }
             }
         }
+
         smallest.map(|(_, r)| r.id.clone())
     }
 
@@ -511,11 +535,13 @@ impl MapWidget {
             } else {
                 RegionState::Normal
             };
+
             if new_state != region.state {
                 region.state = new_state;
                 changed = true;
             }
         }
+
         if changed {
             drop(regions);
             self.queue_draw();
@@ -525,12 +551,14 @@ impl MapWidget {
     fn clear_highlight(&self) {
         let mut regions = self.imp().regions.borrow_mut();
         let mut changed = false;
+
         for region in regions.iter_mut() {
             if region.state == RegionState::Highlighted {
                 region.state = RegionState::Normal;
                 changed = true;
             }
         }
+
         if changed {
             drop(regions);
             self.queue_draw();
@@ -559,12 +587,14 @@ impl MapWidget {
                 break;
             }
         }
+
         drop(regions);
         self.queue_draw();
     }
 
     pub fn reset_all_states(&self) {
         let mut regions = self.imp().regions.borrow_mut();
+
         for region in regions.iter_mut() {
             if !matches!(
                 region.state,
@@ -573,6 +603,7 @@ impl MapWidget {
                 region.state = RegionState::Normal;
             }
         }
+
         drop(regions);
         self.queue_draw();
     }

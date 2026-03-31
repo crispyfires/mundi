@@ -22,6 +22,7 @@ mod imp {
     }
 
     impl ObjectImpl for MundiApplication {}
+
     impl ApplicationImpl for MundiApplication {
         fn startup(&self) {
             self.parent_startup();
@@ -47,6 +48,7 @@ mod imp {
             window.present();
         }
     }
+
     impl GtkApplicationImpl for MundiApplication {}
     impl AdwApplicationImpl for MundiApplication {}
 }

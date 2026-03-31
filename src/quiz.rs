@@ -59,6 +59,7 @@ impl Quiz {
                 return true;
             }
         }
+
         self.attempts_left = self.attempts_left.saturating_sub(1);
         if self.attempts_left == 0 {
             self.current += 1;

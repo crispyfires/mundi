@@ -284,6 +284,7 @@ impl MapExerciseView {
             } else {
                 gettext(name)
             };
+
             imp.prompt_label
                 .set_text(&i18n_format!("{}: {}", gettext("Select"), translated));
             imp.attempts_label.set_text(&i18n_format!(
@@ -304,6 +305,7 @@ impl MapExerciseView {
             .map(|s| s.elapsed())
             .unwrap_or_default();
         *imp.start_time.borrow_mut() = None;
+
         if let Some(source_id) = imp.timer_source_id.borrow_mut().take() {
             source_id.remove();
         }
@@ -324,6 +326,7 @@ impl MapExerciseView {
         } else {
             0.0
         };
+
         imp.score_label
             .set_text(&i18n_format!("{}/{}", correct, total));
         imp.score_caption

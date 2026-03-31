@@ -37,6 +37,7 @@ mod imp {
                 .build();
         }
     }
+
     impl WidgetImpl for PreferencesDialog {}
     impl AdwDialogImpl for PreferencesDialog {}
     impl PreferencesDialogImpl for PreferencesDialog {}
