@@ -76,6 +76,15 @@
   </screenshots>
 
   <releases>
+    <release version="0.7.0" date="2026-04-09">
+      <description>
+        <ul>
+          <li>Sound effects for correct and wrong answers</li>
+          <li>Preferences dialog with sound effects toggle</li>
+          <li>Updated to Rust edition 2024</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.6.0" date="2026-03-29">
       <description>
         <ul>
