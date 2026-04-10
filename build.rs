@@ -18,7 +18,6 @@ fn generate_config() {
                 "APPLICATION_ID" => "io.github.nacho.mundi".to_string(),
                 "GETTEXT_PACKAGE" => "mundi".to_string(),
                 "DATADIR" => "/usr/share".to_string(),
-                "SYSTEM_DATADIR" => "/usr/share".to_string(),
                 _ => String::new(),
             })
         })

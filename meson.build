@@ -17,15 +17,9 @@ localedir = get_option('prefix') / get_option('localedir')
 datadir = get_option('prefix') / get_option('datadir')
 application_id = 'io.github.nacho.mundi'
 
-system_data_dir = get_option('system-data-dir')
-if system_data_dir == ''
-  system_data_dir = datadir
-endif
-
 conf = configuration_data()
 conf.set('LOCALEDIR', localedir)
 conf.set('DATADIR', datadir)
-conf.set('SYSTEM_DATADIR', system_data_dir)
 conf.set('GETTEXT_PACKAGE', gettext_package)
 conf.set('VERSION', meson.project_version())
 conf.set('APPLICATION_ID', application_id)
@@ -36,7 +30,6 @@ cargo_env.set('VERSION', meson.project_version())
 cargo_env.set('APPLICATION_ID', application_id)
 cargo_env.set('GETTEXT_PACKAGE', gettext_package)
 cargo_env.set('DATADIR', datadir)
-cargo_env.set('SYSTEM_DATADIR', system_data_dir)
 cargo_env.set('LOCALEDIR', localedir)
 
 if get_option('buildtype') == 'release'

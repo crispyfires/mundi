@@ -1,1 +1,0 @@
-option('system-data-dir', type: 'string', value: '', description: 'System data directory for shared resources (e.g. sound themes)')
