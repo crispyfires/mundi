@@ -9,7 +9,7 @@ pub struct SoundPlayer {
 
 impl Default for SoundPlayer {
     fn default() -> Self {
-        let sounds_dir = PathBuf::from(crate::config::DATADIR)
+        let sounds_dir = PathBuf::from(crate::config::SYSTEM_DATADIR)
             .join("sounds")
             .join("freedesktop")
             .join("stereo");

@@ -2,3 +2,4 @@ pub const VERSION: &str = "@VERSION@";
 pub const APPLICATION_ID: &str = "@APPLICATION_ID@";
 pub const PACKAGE: &str = "@GETTEXT_PACKAGE@";
 pub const DATADIR: &str = "@DATADIR@";
+pub const SYSTEM_DATADIR: &str = "@SYSTEM_DATADIR@";
