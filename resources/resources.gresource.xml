@@ -23,5 +23,7 @@
     <file>maps/poland/voivodeship-capitals.svg</file>
     <file>maps/portugal/districts.svg</file>
     <file>maps/united_states/states.svg</file>
+    <file>sounds/correct.oga</file>
+    <file>sounds/wrong.oga</file>
   </gresource>
 </gresources>
