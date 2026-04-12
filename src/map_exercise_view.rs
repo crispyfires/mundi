@@ -3,11 +3,13 @@ use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use i18n_format::i18n_format;
 use libadwaita as adw;
+use libadwaita::prelude::*;
 use libadwaita::subclass::prelude::*;
 use std::cell::RefCell;
 use std::rc::Rc;
 use std::time::Instant;
 
+use crate::leaderboard::{Leaderboard, LeaderboardEntry};
 use crate::map_widget::{MapWidget, RegionState};
 use crate::quiz::Quiz;
 use crate::registry::{ExerciseKind, MapExercise};
@@ -45,12 +47,23 @@ mod imp {
         pub time_caption: TemplateChild<gtk::Label>,
         #[template_child]
         pub retry_button: TemplateChild<gtk::Button>,
+        #[template_child]
+        pub name_box: TemplateChild<gtk::Box>,
+        #[template_child]
+        pub name_entry: TemplateChild<gtk::Entry>,
+        #[template_child]
+        pub save_button: TemplateChild<gtk::Button>,
+        #[template_child]
+        pub no_qualify_label: TemplateChild<gtk::Label>,
+        #[template_child]
+        pub leaderboard_list: TemplateChild<gtk::ListBox>,
         pub map_widget: RefCell<Option<MapWidget>>,
         pub quiz: RefCell<Option<Quiz>>,
         pub exercise: RefCell<Option<MapExercise>>,
         pub quiz_active: RefCell<bool>,
         pub start_time: Rc<RefCell<Option<Instant>>>,
         pub timer_source_id: RefCell<Option<glib::SourceId>>,
+        pub save_handler_id: RefCell<Option<glib::SignalHandlerId>>,
         pub sound_player: SoundPlayer,
     }
 
@@ -185,6 +198,8 @@ impl MapExerciseView {
         imp.quiz_button.set_visible(false);
         imp.discovery_label.set_visible(false);
         imp.results_box.set_visible(false);
+        imp.name_box.set_visible(false);
+        imp.no_qualify_label.set_visible(false);
         imp.prompt_label.set_visible(true);
         imp.attempts_label.set_visible(true);
 
@@ -332,13 +347,104 @@ impl MapExerciseView {
         imp.score_caption
             .set_text(&i18n_format!("{} — {}%", gettext("Score"), pct));
 
-        let secs = elapsed.as_secs();
+        let time_secs = elapsed.as_secs();
         imp.time_label
-            .set_text(&format!("{}:{:02}", secs / 60, secs % 60));
+            .set_text(&format!("{}:{:02}", time_secs / 60, time_secs % 60));
         imp.time_caption.set_text(&gettext("Time"));
+
+        // Leaderboard
+        let exercise = imp.exercise.borrow();
+        if let Some(ex) = exercise.as_ref() {
+            let leaderboard = Leaderboard::load(ex.country_id, ex.id);
+            if leaderboard.qualifies(correct, total, time_secs) {
+                imp.name_box.set_visible(true);
+                imp.no_qualify_label.set_visible(false);
+
+                if let Some(old_id) = imp.save_handler_id.borrow_mut().take() {
+                    imp.save_button.disconnect(old_id);
+                }
+                let view = self.downgrade();
+                let country_id = ex.country_id.to_string();
+                let exercise_id = ex.id.to_string();
+                let id = imp.save_button.connect_clicked(move |_| {
+                    if let Some(v) = view.upgrade() {
+                        v.save_leaderboard_entry(
+                            &country_id,
+                            &exercise_id,
+                            correct,
+                            total,
+                            time_secs,
+                        );
+                    }
+                });
+                *imp.save_handler_id.borrow_mut() = Some(id);
+            } else {
+                imp.name_box.set_visible(false);
+                imp.no_qualify_label
+                    .set_text(&gettext("Your score didn\u{2019}t make the top 50"));
+                imp.no_qualify_label.set_visible(true);
+            }
+            self.populate_leaderboard(&leaderboard, None);
+        }
 
         imp.results_box.set_visible(true);
         *imp.quiz_active.borrow_mut() = false;
+    }
+
+    fn save_leaderboard_entry(
+        &self,
+        country_id: &str,
+        exercise_id: &str,
+        score: u32,
+        total: u32,
+        time_secs: u64,
+    ) {
+        let imp = self.imp();
+        let name = imp.name_entry.text().trim().to_string();
+        if name.is_empty() {
+            return;
+        }
+
+        let mut leaderboard = Leaderboard::load(country_id, exercise_id);
+        let entry = LeaderboardEntry {
+            name,
+            score,
+            total,
+            time_secs,
+        };
+        let rank = leaderboard.insert(entry);
+        leaderboard.save(country_id, exercise_id);
+
+        imp.name_box.set_visible(false);
+        self.populate_leaderboard(&leaderboard, Some(rank));
+    }
+
+    fn populate_leaderboard(&self, leaderboard: &Leaderboard, highlight: Option<usize>) {
+        let list = &self.imp().leaderboard_list;
+        while let Some(child) = list.first_child() {
+            list.remove(&child);
+        }
+        for (i, entry) in leaderboard.entries.iter().enumerate() {
+            let pct = if entry.total > 0 {
+                (entry.score as f64 / entry.total as f64 * 100.0).floor()
+            } else {
+                0.0
+            };
+            let row = adw::ActionRow::builder()
+                .title(&entry.name)
+                .subtitle(i18n_format!(
+                    "{}% — {}:{:02}",
+                    pct,
+                    entry.time_secs / 60,
+                    entry.time_secs % 60
+                ))
+                .build();
+            row.add_prefix(&gtk::Label::new(Some(&format!("{}.", i + 1))));
+            if highlight == Some(i) {
+                row.add_css_class("accent");
+            }
+            list.append(&row);
+        }
     }
 
     fn save_stats(&self, session_correct: u32, session_total: u32) {

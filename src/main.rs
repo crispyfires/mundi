@@ -1,4 +1,5 @@
 mod application;
+mod leaderboard;
 mod map_exercise_view;
 mod map_widget;
 mod preferences_dialog;
