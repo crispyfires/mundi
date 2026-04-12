@@ -76,6 +76,14 @@
   </screenshots>
 
   <releases>
+    <release version="0.8.0" date="2026-04-12">
+      <description>
+        <ul>
+          <li>Per-exercise leaderboard with top 50 high scores</li>
+          <li>Sound effects bundled as application resources</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.7.0" date="2026-04-09">
       <description>
         <ul>
