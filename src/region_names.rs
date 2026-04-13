@@ -40,10 +40,12 @@ pub const SPAIN_COMMUNITIES: &[(&str, &str)] = &[
     ("Castilla-La Mancha", N_("Castilla-La Mancha")),
     ("Castilla y León", N_("Castile and León")),
     ("Cataluña", N_("Catalonia")),
+    ("Ceuta", N_("Ceuta")),
     ("Extremadura", N_("Extremadura")),
     ("Galicia", N_("Galicia")),
     ("La Rioja", N_("La Rioja")),
     ("Madrid", N_("Madrid")),
+    ("Melilla", N_("Melilla")),
     ("Murcia", N_("Murcia")),
     ("Navarra", N_("Navarre")),
     ("País Vasco", N_("Basque Country")),
@@ -52,8 +54,10 @@ pub const SPAIN_COMMUNITIES: &[(&str, &str)] = &[
 
 pub const SPAIN_COMMUNITY_CAPITALS: &[(&str, &str)] = &[
     (N_("Barcelona"), N_("Catalonia")),
+    (N_("Ceuta"), N_("Ceuta")),
     (N_("Logroño"), N_("La Rioja")),
     (N_("Madrid"), N_("Madrid")),
+    (N_("Melilla"), N_("Melilla")),
     (N_("Mérida"), N_("Extremadura")),
     (N_("Murcia"), N_("Murcia")),
     (N_("Oviedo"), N_("Asturias")),
