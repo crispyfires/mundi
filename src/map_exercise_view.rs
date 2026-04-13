@@ -381,7 +381,7 @@ impl MapExerciseView {
             } else {
                 imp.name_box.set_visible(false);
                 imp.no_qualify_label
-                    .set_text(&gettext("Your score didn\u{2019}t make the top 50"));
+                    .set_text(&gettext("Your score didn't make the top 50"));
                 imp.no_qualify_label.set_visible(true);
             }
             self.populate_leaderboard(&leaderboard, None);

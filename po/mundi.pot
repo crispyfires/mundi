@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-29 23:17+0200\n"
+"POT-Creation-Date: 2026-04-13 09:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1871,20 +1871,24 @@ msgstr ""
 msgid "World"
 msgstr ""
 
-#: src/map_exercise_view.rs:288
+#: src/map_exercise_view.rs:304
 msgid "Select"
 msgstr ""
 
-#: src/map_exercise_view.rs:291
+#: src/map_exercise_view.rs:307
 msgid "Attempts remaining"
 msgstr ""
 
-#: src/map_exercise_view.rs:330
+#: src/map_exercise_view.rs:348
 msgid "Score"
 msgstr ""
 
-#: src/map_exercise_view.rs:335
+#: src/map_exercise_view.rs:353
 msgid "Time"
+msgstr ""
+
+#: src/map_exercise_view.rs:384
+msgid "Your score didn't make the top 50"
 msgstr ""
 
 #: resources/gtk/menus.ui:6
@@ -1907,8 +1911,16 @@ msgstr ""
 msgid "Start Quiz"
 msgstr ""
 
-#: resources/ui/map_exercise_view.ui:134
+#: resources/ui/map_exercise_view.ui:133
 msgid "Retry"
+msgstr ""
+
+#: resources/ui/map_exercise_view.ui:149
+msgid "Your name"
+msgstr ""
+
+#: resources/ui/map_exercise_view.ui:155
+msgid "Save"
 msgstr ""
 
 #: resources/ui/preferences_dialog.ui:10
