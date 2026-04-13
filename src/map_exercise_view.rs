@@ -143,6 +143,14 @@ impl MapExerciseView {
                 v.start_quiz();
             }
         });
+
+        // Stop music when navigating away
+        let view = self.downgrade();
+        self.connect_hiding(move |_| {
+            if let Some(v) = view.upgrade() {
+                v.imp().sound_player.stop_music();
+            }
+        });
     }
 
     fn find_region_name(&self, region_id: &str) -> Option<String> {
@@ -226,6 +234,8 @@ impl MapExerciseView {
             }
         });
         *imp.timer_source_id.borrow_mut() = Some(source_id);
+
+        imp.sound_player.play_music();
 
         self.update_quiz_ui();
     }
@@ -312,6 +322,8 @@ impl MapExerciseView {
 
     fn show_results(&self, correct: u32, total: u32) {
         let imp = self.imp();
+
+        imp.sound_player.stop_music();
 
         // Stop timer
         let elapsed = imp

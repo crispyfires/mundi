@@ -25,5 +25,6 @@
     <file>maps/united_states/states.svg</file>
     <file>sounds/correct.oga</file>
     <file>sounds/wrong.oga</file>
+    <file>sounds/quiz-music.oga</file>
   </gresource>
 </gresources>
