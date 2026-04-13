@@ -30,15 +30,14 @@ Mundi is written in Rust using GTK 4 and libadwaita.
 glib-compile-schemas data/
 GSETTINGS_SCHEMA_DIR=data cargo run
 ```
-
-## Map Sources
-
-- World / Americas / Africa / Asia / Oceania: [BlankMap-World.svg](https://commons.wikimedia.org/wiki/File:BlankMap-World.svg) (public domain)
-
 ## Sound Sources
 
 - Correct/wrong sound effects: [freedesktop sound theme](https://freedesktop.org/wiki/Specifications/sound-theme-spec/) (CC BY-SA)
 - Quiz background music: [quiz game music loop BPM 90](https://freesound.org/people/portwain/sounds/220060/) by portwain (CC0)
+
+## Map Sources
+
+- World / Americas / Africa / Asia / Oceania: [BlankMap-World.svg](https://commons.wikimedia.org/wiki/File:BlankMap-World.svg) (public domain)
 - Europe: [Blank map of Europe (with disputed regions)](https://commons.wikimedia.org/wiki/File:Blank_map_of_Europe_(with_disputed_regions).svg) (CC BY-SA 3.0)
 - Spain: [Mapa de España - Provincias.svg](https://commons.wikimedia.org/wiki/File:Mapa_de_Espa%C3%B1a_-_Provincias.svg) (CC BY-SA 4.0), [Blank map of Iberia.svg](https://commons.wikimedia.org/wiki/File:Blank_map_of_Iberia.svg) (CC BY-SA 4.0)
 - Italy: [simplemaps.com](https://simplemaps.com/svg/country/it) (free for commercial and personal use)
