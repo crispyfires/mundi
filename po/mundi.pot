@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the mundi package.
+# This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: mundi\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-15 16:34+0200\n"
+"POT-Creation-Date: 2026-04-15 16:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1879,16 +1879,24 @@ msgstr ""
 msgid "World"
 msgstr ""
 
-#: src/map_exercise_view.rs:296
-msgid "Select"
+#: src/map_exercise_view.rs:154
+msgid "{}, capital of {}"
 msgstr ""
 
-#: src/map_exercise_view.rs:299
-msgid "Attempts remaining"
+#: src/map_exercise_view.rs:296
+msgid "Select: {}"
+msgstr ""
+
+#: src/map_exercise_view.rs:298
+msgid "Attempts remaining: {}"
+msgstr ""
+
+#: src/quiz_results_view.rs:102
+msgid "{}/{}"
 msgstr ""
 
 #: src/quiz_results_view.rs:104
-msgid "Score"
+msgid "Score — {}%"
 msgstr ""
 
 #: src/quiz_results_view.rs:107
@@ -1897,6 +1905,10 @@ msgstr ""
 
 #: src/quiz_results_view.rs:130
 msgid "Your score didn't make the top 50"
+msgstr ""
+
+#: src/quiz_results_view.rs:179
+msgid "{}% — {}:{:02}"
 msgstr ""
 
 #: resources/gtk/menus.ui:6

@@ -1,7 +1,7 @@
 use gettextrs::gettext;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
-use i18n_format::i18n_format;
+use i18n_format::i18n_fmt;
 use libadwaita as adw;
 use libadwaita::prelude::*;
 use libadwaita::subclass::prelude::*;
@@ -151,7 +151,7 @@ impl MapExerciseView {
                 .find(|(id, _)| *id == primary)
                 .map(|(_, name)| {
                     if ex.kind == ExerciseKind::Capitals {
-                        i18n_format!("{}, capital of {}", gettext(region_id), gettext(*name))
+                        i18n_fmt! { i18n_fmt("{}, capital of {}", gettext(region_id), gettext(*name)) }
                     } else {
                         gettext(*name)
                     }
@@ -293,12 +293,10 @@ impl MapExerciseView {
             };
 
             imp.prompt_label
-                .set_text(&i18n_format!("{}: {}", gettext("Select"), translated));
-            imp.attempts_label.set_text(&i18n_format!(
-                "{}: {}",
-                gettext("Attempts remaining"),
-                quiz.attempts_left
-            ));
+                .set_text(&i18n_fmt! { i18n_fmt("Select: {}", translated) });
+            imp.attempts_label.set_text(&i18n_fmt! {
+                i18n_fmt("Attempts remaining: {}", quiz.attempts_left)
+            });
         }
     }
 

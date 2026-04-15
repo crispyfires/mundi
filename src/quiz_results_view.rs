@@ -1,7 +1,7 @@
 use gettextrs::gettext;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
-use i18n_format::i18n_format;
+use i18n_format::i18n_fmt;
 use libadwaita as adw;
 use libadwaita::prelude::*;
 use std::cell::RefCell;
@@ -99,9 +99,9 @@ impl QuizResultsView {
         };
 
         imp.score_label
-            .set_text(&i18n_format!("{}/{}", correct, total));
+            .set_text(&i18n_fmt! { i18n_fmt("{}/{}", correct, total) });
         imp.score_caption
-            .set_text(&i18n_format!("{} — {}%", gettext("Score"), pct));
+            .set_text(&i18n_fmt! { i18n_fmt("Score — {}%", pct) });
         imp.time_label
             .set_text(&format!("{}:{:02}", time_secs / 60, time_secs % 60));
         imp.time_caption.set_text(&gettext("Time"));
@@ -175,12 +175,9 @@ impl QuizResultsView {
             };
             let row = adw::ActionRow::builder()
                 .title(&entry.name)
-                .subtitle(i18n_format!(
-                    "{}% — {}:{:02}",
-                    pct,
-                    entry.time_secs / 60,
-                    entry.time_secs % 60
-                ))
+                .subtitle(i18n_fmt! {
+                    i18n_fmt("{}% — {}:{:02}", pct, entry.time_secs / 60, entry.time_secs % 60)
+                })
                 .build();
             row.add_prefix(&gtk::Label::new(Some(&format!("{}.", i + 1))));
             if highlight == Some(i) {

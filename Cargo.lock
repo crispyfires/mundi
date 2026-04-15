@@ -520,6 +520,16 @@ checksum = "f24f35ae2e31a52498d50755e28bef173da86913238c1eb0e48e76b724acd2c6"
 dependencies = [
  "formatx",
  "gettext-rs",
+ "i18n-format-macro",
+]
+
+[[package]]
+name = "i18n-format-macro"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d8d776de5bb2eeec1ecb1ce40aaded1185d75cc4c78f8682d9a8165b6f1bf81e"
+dependencies = [
+ "quote",
 ]
 
 [[package]]
