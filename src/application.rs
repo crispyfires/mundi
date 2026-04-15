@@ -63,7 +63,6 @@ impl MundiApplication {
     pub fn new() -> Self {
         glib::Object::builder()
             .property("application-id", "io.github.nacho.mundi")
-            .property("resource-base-path", "/io/github/nacho/mundi")
             .build()
     }
 
