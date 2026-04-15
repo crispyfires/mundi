@@ -76,6 +76,16 @@
   </screenshots>
 
   <releases>
+    <release version="0.9.0" date="2026-04-15">
+      <description>
+        <ul>
+          <li>Add Ceuta and Melilla to autonomous communities</li>
+          <li>Looping background music during quiz</li>
+          <li>Improved US states map resolution</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.8.0" date="2026-04-12">
       <description>
         <ul>
