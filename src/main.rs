@@ -4,6 +4,7 @@ mod map_exercise_view;
 mod map_widget;
 mod preferences_dialog;
 mod quiz;
+mod quiz_results_view;
 mod region_names;
 mod registry;
 mod sound_player;

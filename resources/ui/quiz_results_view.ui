@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="QuizResultsView" parent="GtkBox">
+    <property name="orientation">vertical</property>
+    <property name="spacing">36</property>
+    <property name="halign">center</property>
+    <property name="vexpand">true</property>
+    <child>
+      <object class="GtkBox">
+        <property name="orientation">horizontal</property>
+        <property name="spacing">12</property>
+        <property name="halign">center</property>
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <property name="width-request">200</property>
+            <child>
+              <object class="GtkLabel" id="score_label">
+                <style>
+                  <class name="key-number"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="score_caption">
+                <style>
+                  <class name="dim-label"/>
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkSeparator"/>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <property name="width-request">200</property>
+            <child>
+              <object class="GtkLabel" id="time_label">
+                <style>
+                  <class name="key-number"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="time_caption">
+                <style>
+                  <class name="dim-label"/>
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkButton" id="retry_button">
+        <property name="label" translatable="yes">Retry</property>
+        <property name="halign">center</property>
+        <style>
+          <class name="pill"/>
+          <class name="suggested-action"/>
+        </style>
+      </object>
+    </child>
+    <child>
+      <object class="GtkBox" id="name_box">
+        <property name="orientation">horizontal</property>
+        <property name="spacing">6</property>
+        <property name="halign">center</property>
+        <property name="visible">false</property>
+        <child>
+          <object class="GtkEntry" id="name_entry">
+            <property name="placeholder-text" translatable="yes">Your name</property>
+            <property name="width-chars">20</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="save_button">
+            <property name="label" translatable="yes">Save</property>
+            <style>
+              <class name="suggested-action"/>
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkLabel" id="no_qualify_label">
+        <property name="visible">false</property>
+        <style>
+          <class name="dim-label"/>
+        </style>
+      </object>
+    </child>
+    <child>
+      <object class="GtkScrolledWindow">
+        <property name="hscrollbar-policy">never</property>
+        <property name="height-request">300</property>
+        <property name="child">
+          <object class="GtkListBox" id="leaderboard_list">
+            <property name="selection-mode">none</property>
+            <style>
+              <class name="boxed-list"/>
+            </style>
+          </object>
+        </property>
+      </object>
+    </child>
+  </template>
+</interface>
