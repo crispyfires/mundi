@@ -26,7 +26,7 @@ src/                        # All Rust source
   sound_player.rs           # GtkMediaFile wrapper (correct/wrong/music)
   preferences_dialog.rs     # Sound effects toggle (GSettings-bound)
 resources/
-  maps/{country}/*.svg      # SVG maps (22 files across 12 directories)
+  maps/{country}/*.svg      # SVG maps (18 files across 14 directories)
   ui/*.ui                   # GTK Builder XML templates (4 files)
   sounds/                   # correct.oga, wrong.oga, quiz-music.oga
   style.css                 # Named colors for map region states
@@ -36,7 +36,7 @@ data/
   *.metainfo.xml            # AppStream metadata with release history
   *.desktop.in              # Desktop entry template
   icons/                    # App icon (SVG, GNOME HIG palette)
-po/                         # Translations: es, gl, it, pl
+po/                         # Translations: es, fr, gl, it, pl
 build.rs                    # Config generation + GResource compilation
 ```
 

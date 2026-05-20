@@ -495,6 +495,30 @@ pub const GALICIA_PROVINCES: &[(&str, &str)] = &[
     ("Pontevedra", N_("Pontevedra")),
 ];
 
+pub const FRANCE_REGIONS: &[(&str, &str)] = &[
+    ("Auvergne-Rhône-Alpes", N_("Auvergne-Rhône-Alpes")),
+    ("Bourgogne-Franche-Comté", N_("Bourgogne-Franche-Comté")),
+    ("Bretagne", N_("Brittany")),
+    ("Centre-Val de Loire", N_("Centre-Val de Loire")),
+    ("Corse", N_("Corsica")),
+    ("Grand Est", N_("Grand Est")),
+    ("Guadeloupe", N_("Guadeloupe")),
+    ("Guyane", N_("French Guiana")),
+    ("Hauts-de-France", N_("Hauts-de-France")),
+    ("Île-de-France", N_("Île-de-France")),
+    ("La Réunion", N_("Réunion")),
+    ("Martinique", N_("Martinique")),
+    ("Mayotte", N_("Mayotte")),
+    ("Normandie", N_("Normandy")),
+    ("Nouvelle-Aquitaine", N_("New Aquitaine")),
+    ("Occitanie", N_("Occitanie")),
+    ("Pays de la Loire", N_("Pays de la Loire")),
+    (
+        "Provence-Alpes-Côte d'Azur",
+        N_("Provence-Alpes-Côte d'Azur"),
+    ),
+];
+
 pub const EUROPE_CAPITALS: &[(&str, &str)] = &[
     (N_("Tirana"), N_("Albania")),
     (N_("Andorra la Vella"), N_("Andorra")),
