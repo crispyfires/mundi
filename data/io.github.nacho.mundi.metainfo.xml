@@ -76,6 +76,15 @@
   </screenshots>
 
   <releases>
+    <release version="0.10.0" date="2026-05-21">
+      <description>
+        <ul>
+          <li>Add France regions exercise</li>
+          <li>French translation</li>
+          <li>Updated dependencies</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.9.0" date="2026-04-15">
       <description>
         <ul>
